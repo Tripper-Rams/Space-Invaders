@@ -1,0 +1,51 @@
+/**
+ * Creates Barriers for game and checks fro when they get hit
+ * 
+ * @author (Armando Rams & Mac Conroy) 
+ * @version (6-2-15)
+ */
+public class Barriers
+{
+    public Barriers(int bx, int by)
+    {
+        bx=0;
+        by=0;
+    }
+    public void drawBarrier(Graphics g)
+    {
+      int pointax = bx;
+      int pointay = by;
+      int pointbx = bx;
+      int pointby = by+30;
+      int pointcx = bx-30;
+      int pointcy = by+30;
+      int pointdx = bx-30;
+      int pointdy = by;
+    
+      g.drawLine(pointax, pointay, pointbx, pointby);
+      g.drawLine(pointbx, pointby, pointcx, pointcy);
+      g.drawLine(pointcx, pointcy, pointdx, pointdy);
+      g.drawLine(pointdx, pointdy, pointax, pointay);
+    
+    }
+    public boolean isHit()
+    {
+        if(checkCollison())
+        return true;
+        else
+        return false;
+    }
+    public boolean isDestroyed()
+    {   int count = 0;
+        if(isHit())
+        {
+            count++;
+        }
+        if(count ==10)
+        {
+            return true;
+        }
+        else 
+           return false;
+    }
+}
